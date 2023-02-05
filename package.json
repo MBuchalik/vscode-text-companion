@@ -7,15 +7,34 @@
     "vscode": "^1.75.0"
   },
   "categories": [
-    "Other"
+    "Snippets",
+    "Formatters",
+    "Machine Learning",
+    "Education"
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "text-companion.helloWorld",
-        "title": "Hello World"
+        "command": "text-companion.shorten-text",
+        "title": "Text Companion: Shorten the selected text"
+      },
+      {
+        "command": "text-companion.simplify-text",
+        "title": "Text Companion: Make the selected text easier to understand"
+      },
+      {
+        "command": "text-companion.fix-grammar-issues",
+        "title": "Text Companion: Fix grammar and spelling issues in the selected text"
+      },
+      {
+        "command": "text-companion.set-openai-api-key",
+        "title": "Text Companion: Set OpenAI API Key"
+      },
+      {
+        "command": "text-companion.delete-openai-api-key",
+        "title": "Text Companion: Delete OpenAI API Key"
       }
     ]
   },
@@ -27,6 +46,10 @@
     "lint": "eslint . --max-warnings=0 && npm run lint-additional-files",
     "lint-additional-files": "prettier --check **/*.{md,json,yml}",
     "test": "node ./out/test/runTest.js"
+  },
+  "dependencies": {
+    "micro-result": "^1.0.1",
+    "openai": "^3.1.0"
   },
   "devDependencies": {
     "@types/glob": "^8.0.1",
