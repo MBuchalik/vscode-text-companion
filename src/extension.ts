@@ -172,8 +172,18 @@ async function handleTextCommand(
         return;
       }
 
+      let preparedText = textShorteningResult.data;
+      /*
+        The original text has been selected in a way that it ends on a newline?
+        (This can for instance happen when the user clicks on a line number, because that selects the entire line and moves the cursor to the next line.)
+        In this case, we want to make sure that we don't remove this newline.
+      */
+      if (selectedText.endsWith('\n') && !preparedText.endsWith('\n')) {
+        preparedText += '\n';
+      }
+
       await editor.edit((editBuilder) => {
-        editBuilder.replace(selection, textShorteningResult.data);
+        editBuilder.replace(selection, preparedText);
       });
     },
   );
