@@ -1,71 +1,101 @@
-# text-companion README
+<div align="center">
+  <img src="./assets/logo.png" alt="Logo" width="300px">
+</div>
 
-This is the README for your extension "text-companion". After writing up a brief description, we recommend including the following sections.
+# Text Companion
+
+> Use AI to shorten comments, to fix grammar errors, and more
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+### Fixing grammar and spelling issues
 
-For example if there is an image subfolder under your extension project workspace:
+Turn this:
 
-\!\[feature X\]\(images/feature-x.png\)
+```
+// this functions very important because checks whether user logged in.
+```
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+... into this:
 
-## Requirements
+```
+// This function is very important because it checks whether the user logged in.
+```
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+![Fixing grammar](./assets/readme/fix.gif)
 
-## Extension Settings
+### Shortening text
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+Turn this:
 
-For example:
+```
+Does the provided path passed in the argument point to an existing file?
+This function returns `false` if the path passed in the argument is invalid,
+or if it points to a directory or the like.
+Please note that we use the sync library internally,
+which is probably not always ideal,
+so use this function only if you need a synchronous result,
+because that is often not what we want.
+```
 
-This extension contributes the following settings:
+... into this:
 
-- `myExtension.enable`: Enable/disable this extension.
-- `myExtension.thing`: Set to `blah` to do something.
+```
+Does the provided path passed point to an existing file?
+Returns `false` if invalid or points to a dir.
+Note: Uses sync library internally, so use only if you need a synchronous result.
+```
 
-## Known Issues
+![Shorten text](./assets/readme/shorten.gif)
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+### Making text easier to understand
 
-## Release Notes
+Turn this:
 
-Users appreciate release notes as you update your extension.
+```
+Does the provided path passed in the argument point to an existing file?
+This function returns `false` if the path passed in the argument is invalid,
+or if it points to a directory or the like.
+Please note that we use the sync library internally,
+which is probably not always ideal,
+so use this function only if you need a synchronous result,
+because that is often not what we want.
+```
 
-### 1.0.0
+... into this:
 
-Initial release of ...
+```
+Does the provided path passed in the argument point to an existing file?
 
-### 1.0.1
+This function returns `false` if:
+- The path passed in the argument is invalid, or
+- It points to a directory or the like.
 
-Fixed issue #.
+Please note that we use the sync library internally,
+which is probably not always ideal.
+Therefore, use this function only if you need a synchronous result;
+asynchronous operations are often preferred.
+```
 
-### 1.1.0
+![Making text easier to understand](./assets/readme/simplify.gif)
 
-Added features X, Y, and Z.
+## Usage
 
----
+### Create an API Key
 
-## Following extension guidelines
+Text Companion uses OpenAI. You need to provide an API Key to use the extension.
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+- Create a new API Key on [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
+- Open the command palette in VSCode and run the following command:  
+  `Text Companion: Set OpenAI API Key`
 
-- [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+### Run the text improvement commands
 
-## Working with Markdown
+First, select the text you want to improve.
+From the command palette, run one of the following commands:
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+- `Text Companion: Shorten the selected text`
+- `Text Companion: Make the selected text easier to understand`
+- `Text Companion: Fix grammar and spelling issues in the selected text`
 
-- Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-- Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-- Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+The selected text will be replaced with the improved one. Not happy with your results? Simply use the undo command like you are used to from regular text editing.
