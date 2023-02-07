@@ -60,6 +60,6 @@ jobs:
         run: npm ci
 
       - name: Publish the extension
-        run: npm run deploy
+        run: npm run vscode-deploy
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
