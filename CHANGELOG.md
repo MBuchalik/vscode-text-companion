@@ -1,9 +1,3 @@
-# Change Log
+## 0.0.1 (2023-02-07)
 
-All notable changes to the "text-companion" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
-
-- Initial release
+This is the very first release.
