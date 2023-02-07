@@ -3,17 +3,39 @@
   "displayName": "Text Companion",
   "description": "Use AI to shorten comments, to fix grammar errors, and more",
   "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.75.0"
+  "scripts": {
+    "vscode-package": "npx vsce package",
+    "vscode:prepublish": "npm run compile",
+    "clean": "rimraf out/",
+    "compile": "npm run clean && tsc -p ./",
+    "watch": "npm run clean && tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint . --max-warnings=0 && npm run lint-additional-files",
+    "lint-additional-files": "prettier --check **/*.{md,json,yml}",
+    "test": "node ./out/test/runTest.js"
   },
-  "categories": [
-    "Snippets",
-    "Formatters",
-    "Machine Learning",
-    "Education"
-  ],
-  "activationEvents": [],
+  "dependencies": {
+    "micro-result": "^1.0.1",
+    "openai": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.0.1",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.75.0",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "@vscode/test-electron": "^2.2.2",
+    "@vscode/vsce": "^2.17.0",
+    "eslint": "^8.33.0",
+    "eslint-config-mbuchalik": "^1.1.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.1.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.9.4"
+  },
   "main": "./out/extension.js",
+  "activationEvents": [],
   "contributes": {
     "commands": [
       {
@@ -38,31 +60,18 @@
       }
     ]
   },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
-    "lint": "eslint . --max-warnings=0 && npm run lint-additional-files",
-    "lint-additional-files": "prettier --check **/*.{md,json,yml}",
-    "test": "node ./out/test/runTest.js"
+  "engines": {
+    "vscode": "^1.75.0"
   },
-  "dependencies": {
-    "micro-result": "^1.0.1",
-    "openai": "^3.1.0"
-  },
-  "devDependencies": {
-    "@types/glob": "^8.0.1",
-    "@types/mocha": "^10.0.1",
-    "@types/node": "16.x",
-    "@types/vscode": "^1.75.0",
-    "@typescript-eslint/eslint-plugin": "^5.49.0",
-    "@typescript-eslint/parser": "^5.49.0",
-    "@vscode/test-electron": "^2.2.2",
-    "eslint": "^8.33.0",
-    "eslint-config-mbuchalik": "^1.1.0",
-    "glob": "^8.1.0",
-    "mocha": "^10.1.0",
-    "typescript": "^4.9.4"
+  "categories": [
+    "Snippets",
+    "Formatters",
+    "Machine Learning",
+    "Education"
+  ],
+  "icon": "assets/logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MBuchalik/vscode-text-companion.git"
   }
 }
