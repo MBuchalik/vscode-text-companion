@@ -1,10 +1,14 @@
-.vscode/**
-.vscode-test/**
-src/**
-.gitignore
-.yarnrc
-vsc-extension-quickstart.md
-**/tsconfig.json
-**/.eslintrc.json
-**/*.map
-**/*.ts
+# We create an allow-list here: We ignore everything and then explicitly "un-ignore" the files we are interested in.
+
+**/**
+
+# For some reason, we cannot write !/foo. See a comment in https://github.com/microsoft/vscode-vsce/issues/697
+
+
+!assets/
+!node_modules/
+!out/
+
+!CHANGELOG.md
+!LICENSE
+!README.md
