@@ -5,6 +5,7 @@
   "version": "0.0.1",
   "scripts": {
     "vscode-package": "npx vsce package",
+    "vscode-deploy": "npx vsce publish",
     "vscode:prepublish": "npm run compile",
     "clean": "rimraf out/",
     "compile": "npm run clean && tsc -p ./",
