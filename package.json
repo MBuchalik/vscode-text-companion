@@ -2,7 +2,7 @@
   "name": "text-companion",
   "displayName": "Text Companion",
   "description": "Use AI to shorten comments, to fix grammar errors, and more",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "vscode-package": "npx vsce package",
     "vscode-deploy": "npx vsce publish",
