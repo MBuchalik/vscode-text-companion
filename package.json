@@ -62,7 +62,7 @@
     ]
   },
   "engines": {
-    "vscode": "^1.75.0"
+    "vscode": "^1.76.0"
   },
   "categories": [
     "Snippets",
