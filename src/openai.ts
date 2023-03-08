@@ -60,10 +60,15 @@ export async function performOpenAIApiRequest(
   const fullPrompt = `${theCommand}\n\nText: ${DIVIDER}\n${textWithoutDivider}\n${DIVIDER}\n\n`;
 
   try {
-    const completion = await api.createCompletion(
+    const completion = await api.createChatCompletion(
       {
-        model: 'text-davinci-003',
-        prompt: fullPrompt,
+        model: 'gpt-3.5-turbo',
+        messages: [
+          {
+            role: 'user',
+            content: fullPrompt,
+          },
+        ],
         max_tokens: MAX_RESPONSE_TOKENS,
         temperature: 0.9,
         top_p: 0.5,
@@ -75,7 +80,7 @@ export async function performOpenAIApiRequest(
       },
     );
 
-    const text = completion.data.choices[0]?.text;
+    const text = completion.data.choices[0]?.message?.content;
 
     if (text === undefined || text.trim().length < 1) {
       return {
